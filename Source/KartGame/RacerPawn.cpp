@@ -2,6 +2,7 @@
 
 
 #include "RacerPawn.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 ARacerPawn::ARacerPawn()
@@ -16,6 +17,13 @@ void ARacerPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void ARacerPawn::CalcCamera(float DeltaTime, struct FMinimalViewInfo& OutResult)
+{
+	Super::CalcCamera(DeltaTime, OutResult);
+	OutResult.Location = OutResult.Location + FVector(-100.0f, 0.0f, 100.0f);
+	OutResult.Rotation = UKismetMathLibrary::ComposeRotators(OutResult.Rotation, FRotator(-45.0f, 0.0f, 0.0f));
 }
 
 // Called every frame

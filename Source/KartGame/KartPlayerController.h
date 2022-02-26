@@ -14,6 +14,10 @@ class KARTGAME_API AKartPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 public:
 	virtual void SetupInputComponent() override;
 	void Acceleration(float acceleration);

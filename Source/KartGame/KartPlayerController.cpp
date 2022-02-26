@@ -5,6 +5,19 @@
 const FName AKartPlayerController::AccelerationBinding("Acceleration");
 const FName AKartPlayerController::SteerBinding("Steer");
 
+void AKartPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (this->PlayerCameraManager == nullptr
+		|| this->GetPawn() == nullptr)
+	{
+		return;
+	}
+
+	this->PlayerCameraManager->SetViewTarget(this->GetPawn());
+}
+
 void AKartPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
